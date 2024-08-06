@@ -13,7 +13,7 @@ services:
       GF_INSTALL_PLUGINS: 'grafana-clock-panel, grafana-simple-json-datasource'
 
 networks:
-  - grafana-monitoring
+  grafana-monitoring: 
 
 volumes:
   grafana-volume:
