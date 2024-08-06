@@ -1,0 +1,7 @@
+---
+- name: Set Up Beelinknix
+  hosts: beelinknix
+  tasks:
+    - name: Run Nixos Rebuild
+      ansible.builtin.shell:
+        cmd: nixos-rebuild switch --flake ~/dotfiles.nix/

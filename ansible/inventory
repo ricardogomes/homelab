@@ -1,0 +1,3 @@
+[servers]
+
+beelinknix  ansible_host=beelinknix ansible_user=rg ansible_python_interpreter=/run/current-system/sw/bin/python

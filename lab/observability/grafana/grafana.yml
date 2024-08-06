@@ -1,0 +1,23 @@
+services:
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    restart: unless-stopped
+    networks:
+      - grafana-monitoring
+    ports:
+      - '3000:3000'
+    volumes:
+      - 'grafana-grafana-volume:/var/lib/grafana'
+    environment:
+      GF_INSTALL_PLUGINS: 'grafana-clock-panel, grafana-simple-json-datasource'
+  networks:
+    grafana-monitoring:
+
+  volumes:
+    grafana-volume:
+      driver: local
+      driver_opts:
+        type: none
+        device: /data/homelab/docker/volumes/grafana
+        o: bind
