@@ -1,0 +1,33 @@
+services:
+  kavita:
+    image: jvmilazz0/kavita:latest  
+    container_name: kavita
+    volumes:
+        - kavita-comics:/comics
+        - kavita-books:/books
+        - kavita-data:/kavita/config
+
+    environment:
+        - TZ=UTC
+    ports:
+        - "9004:5000"
+    restart: unless-stopped
+volumes:
+  kavita-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/kavita/data
+      o: bind
+  kavita-books:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/kavita/books
+      o: bind
+  kavita-comics:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/kavita/comics
+      o: bind
