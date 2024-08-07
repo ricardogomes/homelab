@@ -1,0 +1,20 @@
+services:
+  timetagger:
+    image: ghcr.io/almarklein/timetagger:v23.9.2-nonroot
+    ports:
+      - "9001:80"
+    volumes:
+      - timetagger-volume:/opt/_timetagger
+    environment:
+      - TIMETAGGER_BIND=0.0.0.0:80
+      - TIMETAGGER_DATADIR=/opt/_timetagger
+      - TIMETAGGER_LOG_LEVEL=info
+      - TIMETAGGER_CREDENTIALS=${TIMETAGGER_CREDENTIALS}
+
+volumes:
+  timetagger-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/timetagger
+      o: bind
