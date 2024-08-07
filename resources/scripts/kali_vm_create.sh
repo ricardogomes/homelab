@@ -2,6 +2,7 @@
 
 sudo virt-install \
   --name kali \
+  --osinfo detect=on,name=linux2022
   --memory 4096 \
   --vcpus 2 \
   --disk path=/data/homelab/vms/kali.qcow2,size=50 \
