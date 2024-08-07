@@ -7,10 +7,24 @@ services:
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
-      - /home/ubuntu/docker/nextcloud/appdata:/config
-      - /home/ubuntu/docker/nextcloud/data:/data
+      - nextcloud-config-volume:/config
+      - nextcloud-data-volume:/data
     ports:
       - 9003:443
     restart: unless-stopped
     
+volumes:
+  nextcloud-config-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/nextcloud/config
+      o: bind
+  nextcloud-data-volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/nextcloud/data
+      o: bind
 
+    
