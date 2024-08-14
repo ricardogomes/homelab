@@ -1,0 +1,28 @@
+services:
+  openproject:
+    image: openproject/openproject:14
+    ports:
+      - "9005:80"
+    volumes:
+      - openproject-pgdata:/var/openproject/pgdata
+      - openproject-assets:/var/openproject/assets
+    environment:
+      - OPENPROJECT_HTTPS=false
+      - OPENPROJECT_DEFAULT__LANGUAGE=en
+      - OPENPROJECT_HOST__NAME=192.168.1.100:9005
+      - OPENPROJECT_SECRET_KEY_BASE=${OPENPROJECT_SECRET_KEY_BASE}
+
+
+volumes:
+  openproject-pgdata:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/openproject/pgdata
+      o: bind
+  openproject-assets:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/homelab/docker/volumes/openproject/assets
+      o: bind
