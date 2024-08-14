@@ -10,6 +10,7 @@ services:
       - TIMETAGGER_DATADIR=/opt/_timetagger
       - TIMETAGGER_LOG_LEVEL=info
       - TIMETAGGER_CREDENTIALS=${TIMETAGGER_CREDENTIALS}
+    restart: unless-stopped
 
 volumes:
   timetagger-volume:
